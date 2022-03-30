@@ -5,7 +5,7 @@ step "Run a PowerShell Script" {
         properties = {
             Octopus.Action.RunOnServer = "true"
             Octopus.Action.Script.ScriptBody = <<-EOT
-                Write-Host "Hello, World!"
+                Write-Host $OctopusParameters["Helloworld.Greeting"]
                 
             EOT
             Octopus.Action.Script.ScriptSource = "Inline"
