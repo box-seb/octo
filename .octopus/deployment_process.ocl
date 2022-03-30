@@ -14,3 +14,17 @@ step "Run a PowerShell Script" {
         worker_pool = "Default Worker Pool"
     }
 }
+
+step "Manual Intervention Required" {
+
+    action {
+        action_type = "Octopus.Manual"
+        environments = ["Production"]
+        properties = {
+            Octopus.Action.Manual.BlockConcurrentDeployments = "True"
+            Octopus.Action.Manual.Instructions = "Deploy to Production manually!!"
+            Octopus.Action.Manual.ResponsibleTeamIds = "Everyone"
+        }
+        worker_pool_variable = ""
+    }
+}
